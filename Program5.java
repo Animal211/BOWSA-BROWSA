@@ -1,9 +1,9 @@
 /**
  * @TITLE Program5
  * @COURSE CS 1121 Introduction to Programming
- * @AUTHOR
- * @CREATED 
- * @DESCRIPTION 
+ * @AUTHOR Jacob R. McNeilly
+ * @CREATED 12/3/15
+ * @DESCRIPTION Make a web browser using javaFX
  */
 
 /**
@@ -27,27 +27,34 @@ import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 import javafx.concurrent.Worker.State;
 import javafx.concurrent.Worker;
-
-import java.io.*;
-
-import sun.audio.*;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * The main class for Program5. Program5 constructs the JavaFX window and
@@ -117,44 +124,29 @@ public class Program5 extends Application {
 	@Override
 	public void start(Stage stage) {
 		// Build your window here.
-		try {
-			MARIO();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		stage.setTitle("BROWSA");
-        Button btn = new Button();
-        Button btn2 = new Button();
-        btn.setText("Google Search");
-        btn2.setText("I'm feeling lucky");
-        btn.setOnAction(new EventHandler<ActionEvent>() {
+		Button btn1 = new Button("Back");
+		btn1.setOnAction(new EventHandler<ActionEvent>() {
  
             public void handle(ActionEvent event) {
                 System.out.println("No");
             }
         });
-        
-        
-        StackPane bar = new StackPane();
-        StackPane pages = new StackPane();
-        
-        
-        
-        
-        
-        bar.getChildren().add(btn);
-        bar.getChildren().add(btn2);
-        WebView view = new WebView();
-        WebEngine engine = view.getEngine();
-        engine.load("http://www.google.com");
-        bar.getChildren().add(view);
-        //stage.setScene(new Scene(root, 100, 500));
-        stage.setScene(new Scene(bar, 500, 100));
-        //stage.setScene(new Scene(pages, 300, 500));
-        // apply CSS style
-        // show stage
-        stage.show();
+		
+		stage.setTitle("I Hate This Class");
+		HBox hb = new HBox(btn1);
+		hb.setSpacing(10);
+		
+		  StackPane root1 = new StackPane();
+	        WebView view = new WebView();
+	        WebEngine engine = view.getEngine();
+	        engine.load("http://www.google.com/");
+	        root1.getChildren().add(view);
+	        root1.getChildren().add(hb);
+	        
+	        Scene scene1 = new Scene(root1, 800, 600);
+	        stage.setScene(scene1);
+	        stage.show();
+	        
 	}
 
 	/**
@@ -165,32 +157,6 @@ public class Program5 extends Application {
 	 *
 	 * @param args the command line arguments
 	 */
-	
-	/*public static void topPane() {
-		 HBox top = new HBox();
-		 Button bOne = new Button("Button One");
-		 Button bTwo = new Button("Button Two");
-		 Button bThree = new Button("Button Three");
-		 top.getChildren().addAll(bOne,bTwo,bThree);
-		 top.setBorder(Border.EMPTY);
-		 border.setTop(top);
-		 top.setStyle(borderBox);
-		 top.setPadding(new Insets(10, 5, 10, 5));
-		 
-		 }
-		 */
-	public void MARIO() throws Exception{
-		String gongFile = "http:/66.90.91.26/ost/super-mario-3d-world-soundtrack/vslnsgania/bowser-battle-castle-1.mp3";
-	    InputStream in = new FileInputStream(gongFile);
-	 
-	    // create an audiostream from the inputstream
-	    AudioStream audioStream = new AudioStream(in);
-	 
-	    // play the audio clip with the audioplayer class
-	    AudioPlayer.player.start(audioStream);
-	}
-	
-	
 	public static void main(String[] args) {
 		launch(args);
 	}
